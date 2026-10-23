@@ -30,14 +30,6 @@ Compares four pretrained CNNs (transfer learning) for classifying brain MRI imag
 - The Testing set is used only for final evaluation, never for choosing models or settings.
 - Trained on CPU only (Windows, no GPU).
 
-## Limitations
-
-- 36 validation images (about 4%) have exact duplicates in the training set. Exact duplicates between Testing and the other splits: none found. Within-split duplicates exist and are harmless for leakage.
-- Splits are by image, not by patient. Near-duplicate images and same-patient slices were not checked.
-- Grad-CAM shows where the model looked, not that the region is a real tumor. Heatmaps are coarse (7x7 grid stretched to 224x224) and scaled so the brightest spot is always 1.
-- Grad-CAM is computed from the score before softmax, because softmax saturation on very confident predictions gave unreliable maps.
-- One training run per model, one seed. No confidence intervals.
-
 ## Setup
 
 Python 3.13, TensorFlow 2.21, Keras 3.15 (see `requirements.txt`).
